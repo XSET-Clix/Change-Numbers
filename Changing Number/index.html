@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <style>
+            body {
+                text-align: center;
+                font-family:Arial, Helvetica, sans-serif;
+                background-color: red;
+            }
+            #number {
+                font-size: 320px;
+                color: blue;
+            }
+            #number:hover {
+                cursor: pointer;
+            }
+            div {
+                color: blue;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div>Click on the number to roll it.</div>
+            <div id="number" onclick="stopstart()"></div>
+        <script>
+            var number;
+
+            var numbers = ['&#49','&#x32','&#x33','&#x34','&#x35','&#x36','&#x37','&#x38','&#x39']
+            var stopped = true;
+            var t;
+
+            function change() {
+                var random = Math.floor(Math.random()*9);
+                number.innerHTML = numbers[random];
+            }
+
+            function stopstart() {
+                if(stopped) {
+                    stopped = false;
+
+                    t = setInterval(change, 100);
+                } else {
+                    clearInterval(t);
+                    stopped = true;
+                }
+            }
+
+            window.onload = function() {
+                number = document.getElementById("number");
+                stopstart();
+            }
+        </script>
+    </body>
+</html>
